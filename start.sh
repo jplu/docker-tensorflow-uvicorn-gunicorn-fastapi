@@ -19,10 +19,4 @@ else
 fi
 export GUNICORN_CONF=${GUNICORN_CONF:-$DEFAULT_GUNICORN_CONF}
 
-#HOST=${HOST:-0.0.0.0}
-#PORT=${PORT:-80}
-#LOG_LEVEL=${LOG_LEVEL:-info}
-
-# Start Uvicorn with live reload
-#exec uvicorn --reload --host $HOST --port $PORT --log-level $LOG_LEVEL "$APP_MODULE"
-exec gunicorn -k uvicorn.workers.UvicornWorker -c "$GUNICORN_CONF" "$APP_MODULE"
+exec gunicorn --timeout 120 -k uvicorn.workers.UvicornWorker -c "$GUNICORN_CONF" "$APP_MODULE"
