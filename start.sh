@@ -19,4 +19,4 @@ else
 fi
 export GUNICORN_CONF=${GUNICORN_CONF:-$DEFAULT_GUNICORN_CONF}
 
-exec gunicorn --timeout 120 -k uvicorn.workers.UvicornWorker -c "$GUNICORN_CONF" "$APP_MODULE"
+exec gunicorn --timeout 300 -k uvicorn.workers.UvicornWorker -c "$GUNICORN_CONF" "$APP_MODULE"
